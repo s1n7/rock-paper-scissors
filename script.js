@@ -4,3 +4,13 @@ function computerPlay() {
     return values[rand];    //return randomly chosen value from array
 }
 
+let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
+
+function play(playerSelection, computerSelection) {
+    
+    
+
+    return playerSelection + computerSelection
+}
+
+console.log(play(playerInput, computerPlay()))
