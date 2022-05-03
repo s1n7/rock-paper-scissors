@@ -7,10 +7,23 @@ function computerPlay() {
 let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
 
 function play(playerSelection, computerSelection) {
-    
-    
-
-    return playerSelection + computerSelection
+    if (playerSelection === computerSelection) {
+        return "Looks like a draw! The computer also chose " + playerSelection + ".";
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        return "You win! Rock beats Scissors.";
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return "You win! Paper beats Rock.";
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return "You win! Scissors beats Paper.";
+    } else if (computerSelection === "rock" && playerSelection === "scissors") {
+        return "You loose! Rock beats Scissors.";
+    } else if (computerSelection === "paper" && playerSelection === "rock") {
+        return "You loose! Paper beats Rock.";
+    } else if (computerSelection === "scissors" && playerSelection === "paper") {
+        return "You loose! Scissors beats Paper.";
+    } else {
+        return "Please enter a valid value.";
+    }
 }
 
 console.log(play(playerInput, computerPlay()))
