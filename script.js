@@ -8,19 +8,19 @@ let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").t
 
 function play(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return "Looks like a draw! The computer also chose " + playerSelection + ".";
+        return 0;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win! Rock beats Scissors.";
+        return 1;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You win! Paper beats Rock.";
+        return 1;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! Scissors beats Paper.";
+        return 1;
     } else if (computerSelection === "rock" && playerSelection === "scissors") {
-        return "You loose! Rock beats Scissors.";
+        return 2;
     } else if (computerSelection === "paper" && playerSelection === "rock") {
-        return "You loose! Paper beats Rock.";
+        return 2;
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
-        return "You loose! Scissors beats Paper.";
+        return 2;
     } else {
         return "Please enter a valid value.";
     }
@@ -29,8 +29,32 @@ function play(playerSelection, computerSelection) {
 function game() {
     let playerWins = 0;
     let computerWins = 0;
+    let draws = 0;
+    let result;
 
     for (let i = 0; i < 5; i++) {
-        play(playerInput, computerPlay());
+        result = play(playerInput, computerPlay())
+        if( result === 0 ) {
+            draws++;
+            console.log("Draw!");
+        } else if ( result === 1 ) {
+            playerWins++;
+            console.log("You win!");
+        } else if ( result === 2 ) {
+            computerWins++;
+            console.log("You loose!");
+        } else {
+            i--;
+        }
+    }
+
+    if (playerWins > computerWins) {
+        return "You win! You beat the computer " + playerWins + " times!";
+    } else if (computerWins > playerWins) {
+        return "You loose! The computer beat you " + computerWins + " times!";
+    } else {
+        return "Looks like a draw."
     }
 }
+
+console.log(game());
