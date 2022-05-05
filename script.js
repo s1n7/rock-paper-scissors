@@ -42,7 +42,7 @@ function game() {
         } else if ( results[i] === 1 ) {
             playerWins++;
             console.log("You win!");
-        } else if ( results[i] === 2 ) {
+        } else{
             computerWins++;
             console.log("You loose!");
         }
