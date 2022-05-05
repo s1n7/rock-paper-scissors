@@ -4,8 +4,6 @@ function computerPlay() {
     return values[rand];    //return randomly chosen value from array
 }
 
-let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
-
 function play(playerSelection, computerSelection) {
     if (["rock", "paper", "scissors"].includes(playerSelection)) {
         if (playerSelection === computerSelection) {
@@ -33,21 +31,20 @@ function game() {
     let playerWins = 0;
     let computerWins = 0;
     let draws = 0;
-    let result;
+    const results = [];
 
     for (let i = 0; i < 5; i++) {
-        result = play(playerInput, computerPlay())
-        if( result === 0 ) {
+        let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
+        results[i] = play(playerInput, computerPlay())
+        if( results[i] === 0 ) {
             draws++;
             console.log("Draw!");
-        } else if ( result === 1 ) {
+        } else if ( results[i] === 1 ) {
             playerWins++;
             console.log("You win!");
-        } else if ( result === 2 ) {
+        } else if ( results[i] === 2 ) {
             computerWins++;
             console.log("You loose!");
-        } else {
-            i--;
         }
     }
 
@@ -59,3 +56,5 @@ function game() {
         return "Looks like a draw."
     }
 }
+
+console.log(game());
