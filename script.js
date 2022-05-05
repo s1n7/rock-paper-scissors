@@ -22,6 +22,7 @@ function play(playerSelection, computerSelection) {
             return 2;
         }
     }   
+    return;
 }
 
 function game() {
