@@ -1,11 +1,11 @@
-function computerPlay() {
+function computerPlay() {   // function to create random value
     let rand = Math.floor(Math.random() * 3);   //create random integer between 0 and 2
-    const values = ["rock", "paper", "scissors"]    //array with values
+    const values = ["rock", "paper", "scissors"];   
     return values[rand];    //return randomly chosen value from array
 }
 
 function play(playerSelection, computerSelection) {
-    while (["rock", "paper", "scissors"].includes(playerSelection)) {
+    while (["rock", "paper", "scissors"].includes(playerSelection)) {   //check if user input is valid
         if (playerSelection === computerSelection) {
             return 0;
         } else if (playerSelection === "rock" && computerSelection === "scissors") {
@@ -25,15 +25,15 @@ function play(playerSelection, computerSelection) {
     return;
 }
 
-function game() {
+function game() {   //game function to play 5 rounds 
     let playerWins = 0;
     let computerWins = 0;
     let draws = 0;
-    const results = [];
+    const results = []; //array with result of each round
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {   //loop for 5 rounds
         let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
-        results[i] = play(playerInput, computerPlay())
+        results[i] = play(playerInput, computerPlay())  //save round's result in array
         if (results[i] === 0) {
             draws++;
             console.log("Draw!");
@@ -48,12 +48,12 @@ function game() {
         }
     }
 
-    if (playerWins > computerWins) {
+    if (playerWins > computerWins) {    //check who has more wins 
         return "You win! You beat the computer " + playerWins + " times!";
     } else if (computerWins > playerWins) {
         return "You loose! The computer beat you " + computerWins + " times!";
     } else {
-        return "Looks like a draw."
+        return "Looks like a draw.";
     }
 }
 
