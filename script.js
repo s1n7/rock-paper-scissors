@@ -7,23 +7,26 @@ function computerPlay() {
 let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
 
 function play(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return 0;
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return 1;
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return 1;
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return 1;
-    } else if (computerSelection === "rock" && playerSelection === "scissors") {
-        return 2;
-    } else if (computerSelection === "paper" && playerSelection === "rock") {
-        return 2;
-    } else if (computerSelection === "scissors" && playerSelection === "paper") {
-        return 2;
-    } else {
-        return "Please enter a valid value.";
+    if (["rock", "paper", "scissors"].includes(playerSelection)) {
+        if (playerSelection === computerSelection) {
+            return 0;
+        } else if (playerSelection === "rock" && computerSelection === "scissors") {
+            return 1;
+        } else if (playerSelection === "paper" && computerSelection === "rock") {
+            return 1;
+        } else if (playerSelection === "scissors" && computerSelection === "paper") {
+            return 1;
+        } else if (computerSelection === "rock" && playerSelection === "scissors") {
+            return 2;
+        } else if (computerSelection === "paper" && playerSelection === "rock") {
+            return 2;
+        } else{
+            return 2;
+        }
     }
+    return;
+
+    
 }
 
 function game() {
@@ -56,5 +59,3 @@ function game() {
         return "Looks like a draw."
     }
 }
-
-console.log(game());
