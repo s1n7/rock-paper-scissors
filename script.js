@@ -5,7 +5,7 @@ function computerPlay() {
 }
 
 function play(playerSelection, computerSelection) {
-    if (["rock", "paper", "scissors"].includes(playerSelection)) {
+    while (["rock", "paper", "scissors"].includes(playerSelection)) {
         if (playerSelection === computerSelection) {
             return 0;
         } else if (playerSelection === "rock" && computerSelection === "scissors") {
@@ -21,10 +21,7 @@ function play(playerSelection, computerSelection) {
         } else{
             return 2;
         }
-    }
-    return;
-
-    
+    }   
 }
 
 function game() {
@@ -36,15 +33,17 @@ function game() {
     for (let i = 0; i < 5; i++) {
         let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
         results[i] = play(playerInput, computerPlay())
-        if( results[i] === 0 ) {
+        if (results[i] === 0) {
             draws++;
             console.log("Draw!");
-        } else if ( results[i] === 1 ) {
+        } else if (results[i] === 1) {
             playerWins++;
             console.log("You win!");
-        } else{
+        } else if (results[i] === 2) {
             computerWins++;
             console.log("You loose!");
+        } else {
+            console.log("Enter a valid value.");
         }
     }
 
