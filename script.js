@@ -25,3 +25,11 @@ function play(playerSelection, computerSelection) {
     return;
 }
 
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        alert(button.id);
+    });
+});
+
