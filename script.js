@@ -25,36 +25,3 @@ function play(playerSelection, computerSelection) {
     return;
 }
 
-function game() {   //game function to play 5 rounds 
-    let playerWins = 0;
-    let computerWins = 0;
-    let draws = 0;
-    const results = []; //array with result of each round
-
-    for (let i = 0; i < 5; i++) {   //loop for 5 rounds
-        let playerInput = prompt("Please enter your choice: Rock, paper, or scissors").toLowerCase()
-        results[i] = play(playerInput, computerPlay())  //save round's result in array
-        if (results[i] === 0) {
-            draws++;
-            console.log("Draw!");
-        } else if (results[i] === 1) {
-            playerWins++;
-            console.log("You win!");
-        } else if (results[i] === 2) {
-            computerWins++;
-            console.log("You loose!");
-        } else {
-            console.log("Enter a valid value.");
-        }
-    }
-
-    if (playerWins > computerWins) {    //check who has more wins 
-        return "You win! You beat the computer " + playerWins + " times!";
-    } else if (computerWins > playerWins) {
-        return "You loose! The computer beat you " + computerWins + " times!";
-    } else {
-        return "Looks like a draw.";
-    }
-}
-
-console.log(game());
