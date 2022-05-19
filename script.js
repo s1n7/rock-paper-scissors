@@ -29,7 +29,7 @@ const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        alert(button.id);
+        play(button.id, computerPlay());
     });
 });
 
