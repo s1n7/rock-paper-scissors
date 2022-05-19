@@ -26,13 +26,26 @@ function play(playerSelection, computerSelection) {
 }
 
 const buttons = document.querySelectorAll('button');
-
 const result = document.querySelector('.result');
+
+let playerScore = 0;
+let computerScore = 0;
+let draws = 0;
+const results = [];
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         const point = play(button.id, computerPlay());
-        result.textContent = point;  
+        if (point === 0) {
+            draws++;
+            document.getElementById('draws').textContent = draws;
+        } else if (point === 1) {
+            playerScore++;
+            document.getElementById('playerScore').textContent = playerScore;
+        } else {
+            computerScore++;
+            document.getElementById('computerScore').textContent = computerScore;
+        }
     });
 });
 
