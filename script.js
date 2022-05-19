@@ -27,9 +27,12 @@ function play(playerSelection, computerSelection) {
 
 const buttons = document.querySelectorAll('button');
 
+const result = document.querySelector('.result');
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        play(button.id, computerPlay());
+        const point = play(button.id, computerPlay());
+        result.textContent = point;  
     });
 });
 
