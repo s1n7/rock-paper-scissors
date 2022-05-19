@@ -31,11 +31,14 @@ const result = document.querySelector('.result');
 let playerScore = 0;
 let computerScore = 0;
 let draws = 0;
-const results = [];
+let rounds = 0;
+
+
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         const point = play(button.id, computerPlay());
+        rounds++;
         if (point === 0) {
             draws++;
             document.getElementById('draws').textContent = draws;
@@ -46,6 +49,16 @@ buttons.forEach((button) => {
             computerScore++;
             document.getElementById('computerScore').textContent = computerScore;
         }
+        
+        if (rounds === 5) {
+            if (playerScore > computerScore) {  
+                document.getElementById('endScore').textContent = "You win!";                
+            } else if (computerScore > playerScore) {
+                document.getElementById('endScore').textContent = "Computer wins!";                
+            } else {
+                document.getElementById('endScore').textContent = "Draw!";
+            }
+            
+        }
     });
 });
-
