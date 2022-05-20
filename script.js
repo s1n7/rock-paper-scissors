@@ -27,6 +27,7 @@ function play(playerSelection, computerSelection) {
 
 const buttons = document.querySelectorAll('button');
 const result = document.querySelector('.result');
+const roundResult = document.querySelector('.roundResult');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -42,12 +43,15 @@ buttons.forEach((button) => {
         if (point === 0) {
             draws++;
             document.getElementById('draws').textContent = draws;
+            roundResult.textContent = 'This round is a draw.';
         } else if (point === 1) {
             playerScore++;
             document.getElementById('playerScore').textContent = playerScore;
+            roundResult.textContent = 'You win this round!';
         } else {
             computerScore++;
             document.getElementById('computerScore').textContent = computerScore;
+            roundResult.textContent = 'The computer wins this round!';
         }
         
         if (rounds === 5) {
