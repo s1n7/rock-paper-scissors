@@ -28,12 +28,15 @@ function play(playerSelection, computerSelection) {
 const buttons = document.querySelectorAll('button');
 const result = document.querySelector('.result');
 const roundResult = document.querySelector('.roundResult');
+const reloadDiv = document.querySelector('.reload');
+const reloadButton = document.createElement('button');
+reloadButton.setAttribute('onClick', 'window.location.reload();');
+reloadButton.textContent = 'Replay';
 
 let playerScore = 0;
 let computerScore = 0;
 let draws = 0;
 let rounds = 0;
-
 
 
 buttons.forEach((button) => {
@@ -62,7 +65,7 @@ buttons.forEach((button) => {
             } else {
                 document.getElementById('endScore').textContent = "Draw!";
             }
-            
+        reloadDiv.appendChild(reloadButton);
         }
     });
 });
