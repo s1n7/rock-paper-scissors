@@ -40,7 +40,7 @@ let rounds = 0;
 
 
 buttons.forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', function playGame() {
         const point = play(button.id, computerPlay());
         rounds++;
         if (point === 0) {
@@ -57,15 +57,25 @@ buttons.forEach((button) => {
             roundResult.textContent = 'The computer wins this round!';
         }
         
-        if (rounds === 5) {
-            if (playerScore > computerScore) {  
-                document.getElementById('endScore').textContent = "You win!";                
-            } else if (computerScore > playerScore) {
-                document.getElementById('endScore').textContent = "Computer wins!";                
-            } else {
-                document.getElementById('endScore').textContent = "Draw!";
-            }
-        reloadDiv.appendChild(reloadButton);
-        }
+        determineWinner();
+
+        replay();
     });
 });
+
+
+function determineWinner() {
+    if (rounds === 5) {
+        if (playerScore > computerScore) {  
+            document.getElementById('endScore').textContent = "You win!";                
+        } else if (computerScore > playerScore) {
+            document.getElementById('endScore').textContent = "Computer wins!";                
+        } else {
+            document.getElementById('endScore').textContent = "Draw!";
+        }
+    }
+}
+
+function replay() {
+    reloadDiv.appendChild(reloadButton);
+}
