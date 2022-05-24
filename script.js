@@ -39,30 +39,30 @@ let draws = 0;
 let rounds = 0;
 
 
-buttons.forEach((button) => {
-    button.addEventListener('click', function playGame() {
-        const point = play(button.id, computerPlay());
-        rounds++;
-        if (point === 0) {
-            draws++;
-            document.getElementById('draws').textContent = draws;
-            roundResult.textContent = 'This round is a draw.';
-        } else if (point === 1) {
-            playerScore++;
-            document.getElementById('playerScore').textContent = playerScore;
-            roundResult.textContent = 'You win this round!';
-        } else {
-            computerScore++;
-            document.getElementById('computerScore').textContent = computerScore;
-            roundResult.textContent = 'The computer wins this round!';
-        }
-        
-        determineWinner();
+buttons.forEach(button => { button.addEventListener('click', playGame) });
 
-        replay();
-    });
-});
+function playGame(e) {
+    let playerSelection = e.target.id;
+    const point = play(playerSelection, computerPlay());
+    rounds++;
+    if (point === 0) {
+        draws++;
+        document.getElementById('draws').textContent = draws;
+        roundResult.textContent = 'This round is a draw.';
+    } else if (point === 1) {
+        playerScore++;
+        document.getElementById('playerScore').textContent = playerScore;
+        roundResult.textContent = 'You win this round!';
+    } else {
+        computerScore++;
+        document.getElementById('computerScore').textContent = computerScore;
+        roundResult.textContent = 'The computer wins this round!';
+    }
+    
+    determineWinner();
 
+    replay();
+}
 
 function determineWinner() {
     if (rounds === 5) {
@@ -73,6 +73,7 @@ function determineWinner() {
         } else {
             document.getElementById('endScore').textContent = "Draw!";
         }
+        buttons.forEach(button => { button.removeEventListener('click', playGame) });
     }
 }
 
